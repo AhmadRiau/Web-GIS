@@ -16,9 +16,9 @@ Ikuti langkah berikut untuk menginstall project ini:
 6.  Set **database config** pada berkas `.env`
 7.  `$ php artisan migrate`
 8.  `$ php artisan serve`
-10. Buka `https://localhost:8000` dengan web browser.
+10. Buka `localhost:8000` dengan web browser.
 
 Untuk membuka halaman administrator dapat diakses melalui alamat berikut.
-- Untuk Login : `https://localhost:8000/login`
-- Untuk Register akun : `https://localhost:8000/register`
+- Untuk Login : `localhost:8000/login`
+- Untuk Register akun : `localhost:8000/register`
 
