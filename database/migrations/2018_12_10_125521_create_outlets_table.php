@@ -18,6 +18,7 @@ class CreateOutletsTable extends Migration
             $table->string('name', 60);
             $table->string('address')->nullable();
             $table->string('pemilik')->nullable();
+            $table->string('kontak_pemilik')->nullable();
 
             $table->string('tipe_kos')->nullable();
             $table->string('harga_sewa')->nullable();

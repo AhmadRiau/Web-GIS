@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Outlet extends Model
 {
     protected $fillable = [
-        'name', 'address',
+        'name', 'address', 'pemilik', 'kontak_pemilik',
+        'tipe_kos', 'harga_sewa', 'fasilitas', 'sisa_kamar',
         'latitude', 'longitude',
         'creator_id',
     ];

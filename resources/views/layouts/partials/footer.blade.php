@@ -1,3 +1,7 @@
-<footer class="text-center fixed-bottom mb-2">
-    The source code of this project is available on <a href="https://github.com/nafiesl/laravel-leaflet-example" target="_blank">github</a>.
+
+<footer class="text-center p-2 border-top text-white footer"
+        style="background-color: #fd4d4d; width: 100%;">
+    Powered by Nafiesl Laravel Leaflet.
 </footer>
+
+

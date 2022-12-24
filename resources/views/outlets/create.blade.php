@@ -3,23 +3,72 @@
 @section('title', __('outlet.create'))
 
 @section('content')
-<div class="row justify-content-center">
+<div class="row justify-content-center mb-5">
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">{{ __('outlet.create') }}</div>
             <form method="POST" action="{{ route('outlets.store') }}" accept-charset="UTF-8">
                 {{ csrf_field() }}
                 <div class="card-body">
+
+                    {{-- input nama kos --}}
                     <div class="form-group">
                         <label for="name" class="control-label">{{ __('outlet.name') }}</label>
-                        <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required>
+                        <input id="name" type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}"
+                            name="name" value="{{ old('name') }}" required>
                         {!! $errors->first('name', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
+                    {{-- input alamat kos --}}
                     <div class="form-group">
                         <label for="address" class="control-label">{{ __('outlet.address') }}</label>
-                        <textarea id="address" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" rows="4">{{ old('address') }}</textarea>
+                        <textarea id="address" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}"
+                            name="address" rows="4">{{ old('address') }}</textarea>
                         {!! $errors->first('address', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
+                    {{-- input pemilik kos --}}
+                    <div class="form-group">
+                        <label for="pemilik" class="control-label">{{ __('outlet.owner') }}</label>
+                        <input id="pemilik" type="text" class="form-control{{ $errors->has('pemilik') ? ' is-invalid' : '' }}"
+                            name="pemilik" value="{{ old('pemilik') }}" required>
+                        {!! $errors->first('owner', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                    </div>
+                    {{-- input kontak kos --}}
+                    <div class="form-group">
+                        <label for="kontak_pemilik" class="control-label">{{ __('outlet.contact') }}</label>
+                        <input id="kontak_pemilik" type="text" class="form-control{{ $errors->has('kontak_pemilik') ? ' is-invalid' : '' }}"
+                            name="kontak_pemilik" value="{{ old('kontak_pemilik') }}" required>
+                        {!! $errors->first('kontak_pemilik', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                    </div>
+                    {{-- input tipe kos --}}
+                    <div class="form-group">
+                        <label for="tipe_kos" class="control-label">{{ __('outlet.type') }}</label>
+                        {{-- ganti menjadi radio button --}}
+                        <input id="tipe_kos" type="text" class="form-control{{ $errors->has('tipe_kos') ? ' is-invalid' : '' }}"
+                            name="tipe_kos" value="{{ old('tipe_kos') }}" required>
+                        {!! $errors->first('tipe_kos', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                    </div>
+                    {{-- input sewa kos --}}
+                    <div class="form-group">
+                        <label for="harga_sewa" class="control-label">{{ __('outlet.price') }}</label>
+                        <input id="harga_sewa" type="text" class="form-control{{ $errors->has('harga_sewa') ? ' is-invalid' : '' }}"
+                            name="harga_sewa" value="{{ old('harga_sewa') }}" required>
+                        {!! $errors->first('harga_sewa', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                    </div>
+                    {{-- input sisa kamar kos --}}
+                    <div class="form-group">
+                        <label for="sisa_kamar" class="control-label">{{ __('outlet.room') }}</label>
+                        <input id="sisa_kamar" type="text" class="form-control{{ $errors->has('sisa_kamar') ? ' is-invalid' : '' }}"
+                            name="sisa_kamar" value="{{ old('sisa_kamar') }}" required>
+                        {!! $errors->first('sisa_kamar', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                    </div>
+                    {{-- input fasilitas kos --}}
+                    <div class="form-group">
+                        <label for="fasilitas" class="control-label">{{ __('outlet.facility') }}</label>
+                        <textarea id="fasilitas" class="form-control{{ $errors->has('fasilitas') ? ' is-invalid' : '' }}"
+                                name="fasilitas" rows="4">{{ old('fasilitas') }}</textarea>
+                        {!! $errors->first('fasilitas', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                    </div>
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">

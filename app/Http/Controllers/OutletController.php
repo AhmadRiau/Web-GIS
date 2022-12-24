@@ -34,6 +34,7 @@ class OutletController extends Controller
             'name'      => 'required|max:60',
             'address'   => 'nullable|max:255',
             'pemilik'   => 'nullable|max:255',
+            'kontak_pemilik' => 'nullable|max:255',
 
             'tipe_kos'  => 'nullable|max:255',
             'harga_sewa'=> 'nullable|max:255',
@@ -71,6 +72,7 @@ class OutletController extends Controller
             'name'      => 'required|max:60',
             'address'   => 'nullable|max:255',
             'pemilik'   => 'nullable|max:255',
+            'kontak_pemilik' => 'nullable|max:255',
 
             'tipe_kos'  => 'nullable|max:255',
             'harga_sewa'=> 'nullable|max:255',

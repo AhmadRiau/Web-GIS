@@ -8,11 +8,12 @@ return [
     'show_detail_title' => 'View :name :type detail',
 
     // Actions
-    'show'           => 'View Detail',
+    'show'           => 'Tampilkan Detail',
     'edit'           => 'Edit',
     'delete'         => 'Delete',
     'cancel'         => 'Cancel',
     'reset'          => 'Reset',
-    'delete_confirm' => 'Are you sure to delete this?',
-    'delete_confirm_button' => 'YES, delete it!',
+    'delete_confirm' => 'Yakin ingin menghapus data?',
+    'delete_confirm_button' => 'Ya, Hapus data',
 ];
+

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="card">
+<div class="card mb-3">
     <div class="card-body" id="mapid"></div>
 </div>
 @endsection
@@ -26,10 +26,8 @@
 
 <script>
     var map = L.map('mapid').setView([{{ config('leaflet.map_center_latitude') }}, {{ config('leaflet.map_center_longitude') }}], {{ config('leaflet.zoom_level') }});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
     var markers = L.markerClusterGroup();
 
     axios.get('{{ route('api.outlets.index') }}')
@@ -48,19 +46,31 @@
     });
     map.addLayer(markers);
 
+    // Pin ITTP
+    var markerITTP = L.icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    })
+
+    L.marker([-7.434682463125, 109.25178319215], {icon: markerITTP}).addTo(map).bindPopup("Institut Teknologi Telkom Purwokerto");
+    // end
+
     @can('create', new App\Outlet)
     var theMarker;
 
     map.on('click', function(e) {
         let latitude = e.latlng.lat.toString().substring(0, 15);
         let longitude = e.latlng.lng.toString().substring(0, 15);
-
         if (theMarker != undefined) {
             map.removeLayer(theMarker);
         };
 
-        var popupContent = "Your location : " + latitude + ", " + longitude + ".";
-        popupContent += '<br><a href="{{ route('outlets.create') }}?latitude=' + latitude + '&longitude=' + longitude + '">Add new outlet here</a>';
+        var popupContent = "Koordinat lokasi : <br>Lat: " + latitude + "<br>Long: " + longitude;
+        popupContent += '<br><br><a href="{{ route('outlets.create') }}?latitude=' + latitude + '&longitude=' + longitude + '">Tambah lokasi indekos baru disini</a>';
 
         theMarker = L.marker([latitude, longitude]).addTo(map);
         theMarker.bindPopup(popupContent)
