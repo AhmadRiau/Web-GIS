@@ -7,11 +7,6 @@ use Illuminate\Http\Request;
 
 class OutletController extends Controller
 {
-    /**
-     * Display a listing of the outlet.
-     *
-     * @return \Illuminate\View\View
-     */
     public function index()
     {
         $this->authorize('manage_outlet');
@@ -23,11 +18,6 @@ class OutletController extends Controller
         return view('outlets.index', compact('outlets'));
     }
 
-    /**
-     * Show the form for creating a new outlet.
-     *
-     * @return \Illuminate\View\View
-     */
     public function create()
     {
         $this->authorize('create', new Outlet);
@@ -35,12 +25,7 @@ class OutletController extends Controller
         return view('outlets.create');
     }
 
-    /**
-     * Store a newly created outlet in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Routing\Redirector
-     */
+
     public function store(Request $request)
     {
         $this->authorize('create', new Outlet);
@@ -48,6 +33,13 @@ class OutletController extends Controller
         $newOutlet = $request->validate([
             'name'      => 'required|max:60',
             'address'   => 'nullable|max:255',
+            'pemilik'   => 'nullable|max:255',
+
+            'tipe_kos'  => 'nullable|max:255',
+            'harga_sewa'=> 'nullable|max:255',
+            'fasilitas' => 'nullable|max:255',
+            'sisa_kamar'=> 'nullable|max:255',
+
             'latitude'  => 'nullable|required_with:longitude|max:15',
             'longitude' => 'nullable|required_with:latitude|max:15',
         ]);
@@ -58,23 +50,11 @@ class OutletController extends Controller
         return redirect()->route('outlets.show', $outlet);
     }
 
-    /**
-     * Display the specified outlet.
-     *
-     * @param  \App\Outlet  $outlet
-     * @return \Illuminate\View\View
-     */
     public function show(Outlet $outlet)
     {
         return view('outlets.show', compact('outlet'));
     }
 
-    /**
-     * Show the form for editing the specified outlet.
-     *
-     * @param  \App\Outlet  $outlet
-     * @return \Illuminate\View\View
-     */
     public function edit(Outlet $outlet)
     {
         $this->authorize('update', $outlet);
@@ -82,13 +62,7 @@ class OutletController extends Controller
         return view('outlets.edit', compact('outlet'));
     }
 
-    /**
-     * Update the specified outlet in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Outlet  $outlet
-     * @return \Illuminate\Routing\Redirector
-     */
+
     public function update(Request $request, Outlet $outlet)
     {
         $this->authorize('update', $outlet);
@@ -96,6 +70,13 @@ class OutletController extends Controller
         $outletData = $request->validate([
             'name'      => 'required|max:60',
             'address'   => 'nullable|max:255',
+            'pemilik'   => 'nullable|max:255',
+
+            'tipe_kos'  => 'nullable|max:255',
+            'harga_sewa'=> 'nullable|max:255',
+            'fasilitas' => 'nullable|max:255',
+            'sisa_kamar'=> 'nullable|max:255',
+
             'latitude'  => 'nullable|required_with:longitude|max:15',
             'longitude' => 'nullable|required_with:latitude|max:15',
         ]);
@@ -104,13 +85,6 @@ class OutletController extends Controller
         return redirect()->route('outlets.show', $outlet);
     }
 
-    /**
-     * Remove the specified outlet from storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Outlet  $outlet
-     * @return \Illuminate\Routing\Redirector
-     */
     public function destroy(Request $request, Outlet $outlet)
     {
         $this->authorize('delete', $outlet);
