@@ -33,7 +33,7 @@ return [
     'owner'      => 'Pemilik Indekos',
     'contact'    => 'Kontak Pemilik',
     'type'       => 'Tipe Indekos',
-    'price'      => 'Harga Sewa (Rp.)',
+    'price'      => 'Harga Sewa/ Bulan (Rp.)',
     'facility'   => 'Fasilitas Indekos',
     'room'       => 'Kamar Kosong',
     'latitude'   => 'Koordinat Latitude',
