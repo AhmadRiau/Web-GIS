@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="card mb-3">
+<div class="card mb-2">
     <div class="card-body" id="mapid"></div>
 </div>
 @endsection
