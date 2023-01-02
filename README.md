@@ -1,6 +1,6 @@
 # Laravel Web Gis : Persebaran Indekos Disekitar Institut Teknologi Purowkerto
 
-![Laravel Leaflet JS Project Example](public/screenshots/leaflet-map-01.jpg)
+![Laravel Leaflet](public/screenshots/leaflet-map-01.jpg)
 
 ## Features
 
@@ -16,8 +16,9 @@ Ikuti langkah berikut untuk menginstall project ini:
 6.  Set **database config** pada berkas `.env`
 7.  `$ php artisan migrate`
 8.  `$ php artisan serve`
-10. Buka `https://localhost:8000` dengan web browser.
+10. Buka `localhost:8000` dengan web browser.
 
-## License
+Untuk membuka halaman administrator dapat diakses melalui alamat berikut.
+- Untuk Login : `localhost:8000/login`
+- Untuk Register akun : `localhost:8000/register`
 
-This project is open-sourced software licensed under the [MIT license](LICENSE).
