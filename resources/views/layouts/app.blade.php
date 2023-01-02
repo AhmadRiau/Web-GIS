@@ -19,7 +19,7 @@
 
 </head>
 <body>
-    <div id="app">
+    <div id="app" style="min-height: 95vh;">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel"style="background-color: #fd4d4d">
             <div class="container">
                 <a class="navbar-brand text-white" href="{{ url('/') }}">
@@ -75,8 +75,9 @@
         <main class="py-4 container">
             @yield('content')
         </main>
-        @include('layouts.partials.footer')
+
     </div>
+    @include('layouts.partials.footer')
     <!-- Scripts -->
 
     <script src="{{ asset('js/app.js') }}"></script>
