@@ -29,11 +29,12 @@
                 <thead>
                     <tr>
                         <th class="text-center">{{ __('app.table_no') }}</th>
-                        <th>{{ __('outlet.name') }}</th>
-                        <th>{{ __('outlet.address') }}</th>
-                        <th>{{ __('outlet.latitude') }}</th>
-                        <th>{{ __('outlet.longitude') }}</th>
-                        <th class="text-center">{{ __('app.action') }}</th>
+                        <th style = "width: 10%;" >{{ __('outlet.name') }}</th>
+                        <th style = "width: 20%;" >{{ __('outlet.address') }}</th>
+                        <th style = "width: 10%;">{{ __('outlet.owner') }}</th>
+                        <th style = "width: 10%;">Tipe Indekos & Fasilitas</th>
+                        <th style = "width: 5%;" class="text-center">{{ __('app.action') }}</th>
+                        <th style = "text-align: center"> Foto Kos</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,8 +43,8 @@
                         <td class="text-center">{{ $outlets->firstItem() + $key }}</td>
                         <td>{!! $outlet->name_link !!}</td>
                         <td>{{ $outlet->address }}</td>
-                        <td>{{ $outlet->latitude }}</td>
-                        <td>{{ $outlet->longitude }}</td>
+                        <td>{{ $outlet->pemilik }} <br>{{ $outlet->kontak_pemilik }}  </td>
+                        <td>{{ $outlet->tipe_kos }} <br> {{ $outlet->fasilitas }} </td>
                         <td class="text-center">
                             <a href="{{ route('outlets.show', $outlet) }}" id="show-outlet-{{ $outlet->id }}">{{ __('app.show') }}</a>
                         </td>
