@@ -31,7 +31,7 @@ class OutletController extends Controller
         $this->authorize('create', new Outlet);
 
         $newOutlet = $request->validate([
-            'name'      => 'required|max:60',
+            'name'      => 'required|max:255',
             'address'   => 'nullable|max:255',
             'pemilik'   => 'nullable|max:255',
             'kontak_pemilik' => 'nullable|max:255',
@@ -41,13 +41,38 @@ class OutletController extends Controller
             'fasilitas' => 'nullable|max:255',
             'sisa_kamar'=> 'nullable|max:255',
 
+            'file_foto_kos'  => 'mimes:jpeg,bmp,png,jpg',
+            'file_foto_kamar'=> 'mimes:jpeg,bmp,png,jpg',
+
             'latitude'  => 'nullable|required_with:longitude|max:15',
             'longitude' => 'nullable|required_with:latitude|max:15',
         ]);
+
+        if ($request->hasFile('file_foto_kos')) {
+            $path = $request->file('file_foto_kos')->getRealPath();
+            $ext = $request->file_foto_kos->extension();
+            $doc = file_get_contents($path);
+            $base64 = base64_encode($doc);
+            $mime = $request->file('file_foto_kos')->getClientMimeType();
+
+            $newOutlet['name_foto_kos'] = $request->name .'.'.$ext;
+            $newOutlet['file_foto_kos'] = $base64;
+            $newOutlet['mime_foto_kos'] = $mime;
+        }
+
+        if ($request->hasFile('file_foto_kamar')) {
+            $path = $request->file('file_foto_kamar')->getRealPath();
+            $ext = $request->file_foto_kos->extension();
+            $doc = file_get_contents($path);
+            $base64 = base64_encode($doc);
+            $mime = $request->file('file_foto_kamar')->getClientMimeType();
+
+            $newOutlet['name_foto_kamar'] = $request->name .'.'.$ext;
+            $newOutlet['file_foto_kamar'] = $base64;
+            $newOutlet['mime_foto_kamar'] = $mime;
+        }
         $newOutlet['creator_id'] = auth()->id();
-
         $outlet = Outlet::create($newOutlet);
-
         return redirect()->route('outlets.show', $outlet);
     }
 
@@ -69,7 +94,7 @@ class OutletController extends Controller
         $this->authorize('update', $outlet);
 
         $outletData = $request->validate([
-            'name'      => 'required|max:60',
+            'name'      => 'required|max:255',
             'address'   => 'nullable|max:255',
             'pemilik'   => 'nullable|max:255',
             'kontak_pemilik' => 'nullable|max:255',
@@ -79,9 +104,36 @@ class OutletController extends Controller
             'fasilitas' => 'nullable|max:255',
             'sisa_kamar'=> 'nullable|max:255',
 
+            'file_foto_kos'  => 'mimes:jpeg,bmp,png,jpg',
+            'file_foto_kamar'=> 'mimes:jpeg,bmp,png,jpg',
+
             'latitude'  => 'nullable|required_with:longitude|max:15',
             'longitude' => 'nullable|required_with:latitude|max:15',
         ]);
+
+        if ($request->hasFile('file_foto_kos')) {
+            $path = $request->file('file_foto_kos')->getRealPath();
+            $ext = $request->file_foto_kos->extension();
+            $doc = file_get_contents($path);
+            $base64 = base64_encode($doc);
+            $mime = $request->file('file_foto_kos')->getClientMimeType();
+
+            $newOutlet['name_foto_kos'] = $request->name .'.'.$ext;
+            $newOutlet['file_foto_kos'] = $base64;
+            $newOutlet['mime_foto_kos'] = $mime;
+        }
+
+        if ($request->hasFile('file_foto_kamar')) {
+            $path = $request->file('file_foto_kamar')->getRealPath();
+            $ext = $request->file_foto_kos->extension();
+            $doc = file_get_contents($path);
+            $base64 = base64_encode($doc);
+            $mime = $request->file('file_foto_kamar')->getClientMimeType();
+
+            $newOutlet['name_foto_kamar'] = $request->name .'.'.$ext;
+            $newOutlet['file_foto_kamar'] = $base64;
+            $newOutlet['mime_foto_kamar'] = $mime;
+        }
         $outlet->update($outletData);
 
         return redirect()->route('outlets.show', $outlet);
@@ -98,5 +150,9 @@ class OutletController extends Controller
         }
 
         return back();
+    }
+
+    public function convertBlob(){
+
     }
 }

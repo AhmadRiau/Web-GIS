@@ -30,7 +30,7 @@ return [
     // Attributes
     'name'       => 'Nama Indekos',
     'address'    => 'Alamat Indekos',
-    'owner'      => 'Pemilik Indekos',
+    'owner'      => 'Pemilik ',
     'contact'    => 'Kontak Pemilik',
     'type'       => 'Tipe Indekos',
     'price'      => 'Harga Sewa/ Bulan (Rp.)',

@@ -11,6 +11,8 @@ class Outlet extends Model
         'name', 'address', 'pemilik', 'kontak_pemilik',
         'tipe_kos', 'harga_sewa', 'fasilitas', 'sisa_kamar',
         'latitude', 'longitude',
+        'name_foto_kos', 'mime_foto_kos','file_foto_kos',
+        'name_foto_kamar', 'mime_foto_kamar','file_foto_kamar',
         'creator_id',
     ];
 
@@ -46,8 +48,9 @@ class Outlet extends Model
     public function getMapPopupContentAttribute()
     {
         $mapPopupContent = '';
+        $mapPopupContent .= '<div class="my-2" style="text-align:center;"><br><img src="data:image/jpeg;base64,'.$this->file_foto_kos.'" height="140" class="rounded"/></div>';
         $mapPopupContent .= '<div class="my-2"><strong>'.__('outlet.name').':</strong><br>'.$this->name_link.'</div>';
-        $mapPopupContent .= '<div class="my-2"><strong>'.__('outlet.coordinate').':</strong><br>'.$this->coordinate.'</div>';
+        $mapPopupContent .= '<div class="my-2"><strong>'.__('outlet.coordinate').':</strong><br>'.$this->address.'</div>';
 
         return $mapPopupContent;
     }

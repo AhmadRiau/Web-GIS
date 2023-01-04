@@ -11,6 +11,11 @@
                 <table class="table table-sm">
                     <tbody>
                         <tr>
+                            <td colspan="2" style="text-align: center">
+                                <img src="data:image/jpeg;base64,{{$outlet->file_foto_kos}}" class="img-fluid rounded" style="height: 50vh"/>
+                            </td>
+                        </tr>
+                        <tr>
                             <td style="width: 30%">{{ __('outlet.name') }}</td>
                             <td>{{ $outlet->name }}</td>
                         </tr>
@@ -73,7 +78,7 @@
         </div>
     </div>
     <div class="col-md-6">
-        <div class="card">
+        <div class="card p-1">
             <div class="card-header">{{ trans('outlet.location') }}</div>
             @if ($outlet->coordinate)
             <div class="card-body" id="mapid"></div>

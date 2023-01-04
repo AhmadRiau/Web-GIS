@@ -8,7 +8,7 @@ return [
     'show_detail_title' => 'View :name :type detail',
 
     // Actions
-    'show'           => 'Tampilkan Detail',
+    'show'           => 'Detail',
     'edit'           => 'Edit',
     'delete'         => 'Delete',
     'cancel'         => 'Cancel',

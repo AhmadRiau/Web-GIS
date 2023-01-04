@@ -28,12 +28,11 @@
             <table class="table table-sm table-responsive-sm">
                 <thead>
                     <tr>
-                        <th class="text-center">{{ __('app.table_no') }}</th>
+                        <th style = "width: 4%;"class="text-center">{{ __('app.table_no') }}</th>
                         <th style = "width: 10%;" >{{ __('outlet.name') }}</th>
                         <th style = "width: 20%;" >{{ __('outlet.address') }}</th>
-                        <th style = "width: 10%;">{{ __('outlet.owner') }}</th>
-                        <th style = "width: 10%;">Tipe Indekos & Fasilitas</th>
-                        <th style = "width: 5%;" class="text-center">{{ __('app.action') }}</th>
+                        <th style = "width: 15%;">{{ __('outlet.owner') }}</th>
+                        <th style = "width: 20%; ">Tipe Indekos & Fasilitas</th>
                         <th style = "text-align: center"> Foto Kos</th>
                     </tr>
                 </thead>
@@ -45,9 +44,13 @@
                         <td>{{ $outlet->address }}</td>
                         <td>{{ $outlet->pemilik }} <br>{{ $outlet->kontak_pemilik }}  </td>
                         <td>{{ $outlet->tipe_kos }} <br> {{ $outlet->fasilitas }} </td>
-                        <td class="text-center">
-                            <a href="{{ route('outlets.show', $outlet) }}" id="show-outlet-{{ $outlet->id }}">{{ __('app.show') }}</a>
+                        <td>
+                            <img src="data:image/jpeg;base64,{{$outlet->file_foto_kos}}" class="img-fluid w-100 rounded"/>
                         </td>
+
+                        {{-- <td class="text-center">
+                            <a href="{{ route('outlets.show', $outlet) }}" id="show-outlet-{{ $outlet->id }}">{{ __('app.show') }}</a>
+                        </td> --}}
                     </tr>
                     @endforeach
                 </tbody>

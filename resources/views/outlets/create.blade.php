@@ -7,10 +7,20 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">{{ __('outlet.create') }}</div>
-            <form method="POST" action="{{ route('outlets.store') }}" accept-charset="UTF-8">
+            <form method="POST" action="{{ route('outlets.store') }}" accept-charset="UTF-8" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="card-body">
+                    {{-- input foto kos --}}
+                    <div class="form-group">
+                        <label for="file_foto_kos" class="control-label">Foto Kos</label>
+                        <input id="file_foto_kos" type="file" name="file_foto_kos"
+                            class="form-control-file {{ $errors->has('file_foto_kos') ? ' is-invalid' : '' }}" required>
+                        {!! $errors->first('file_foto_kos', '<span class="invalid-feedback" role="alert">:message</span>') !!}
 
+                        <input id="file_foto_kamar" type="file" name="file_foto_kamar"
+                        class="form-control-file {{ $errors->has('file_foto_kamar') ? ' is-invalid' : '' }}" required>
+                        {!! $errors->first('file_foto_kamar', '<span class="invalid-feedback" role="alert">:message</span>') !!}
+                    </div>
                     {{-- input nama kos --}}
                     <div class="form-group">
                         <label for="name" class="control-label">{{ __('outlet.name') }}</label>
@@ -42,9 +52,32 @@
                     {{-- input tipe kos --}}
                     <div class="form-group">
                         <label for="tipe_kos" class="control-label">{{ __('outlet.type') }}</label>
-                        {{-- ganti menjadi radio button --}}
-                        <input id="tipe_kos" type="text" class="form-control{{ $errors->has('tipe_kos') ? ' is-invalid' : '' }}"
-                            name="tipe_kos" value="{{ old('tipe_kos') }}" required>
+
+                        <table style="width: 100%">
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input id="tipe_kos_laki" type="radio" class="form-check-input{{ $errors->has('tipe_kos') ? ' is -invalid' : '' }}"
+                                            name="tipe_kos" value="Laki-Laki" required>
+                                            <label for="tipe_kos_laki" class="form-check-label">Laki-Laki</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-check">
+                                        <input id="tipe_kos_perempuan" type="radio" class="form-check-input{{ $errors->has('tipe_kos') ? ' is -invalid' : '' }}"
+                                            name="tipe_kos" value="Perempuan" required>
+                                            <label for="tipe_kos_perempuan" class="form-check-label">Perempuan</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-check">
+                                        <input id="tipe_kos_campur" type="radio" class="form-check-input{{ $errors->has('tipe_kos') ? ' is -invalid' : '' }}"
+                                            name="tipe_kos" value="Campur" required>
+                                            <label for="tipe_kos_campur" class="form-check-label">Campur</label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
                         {!! $errors->first('tipe_kos', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                     {{-- input sewa kos --}}
