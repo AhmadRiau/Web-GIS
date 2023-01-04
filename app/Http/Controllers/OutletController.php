@@ -113,27 +113,33 @@ class OutletController extends Controller
 
         if ($request->hasFile('file_foto_kos')) {
             $path = $request->file('file_foto_kos')->getRealPath();
+            //dd($path);
             $ext = $request->file_foto_kos->extension();
             $doc = file_get_contents($path);
+            //dd($doc);
             $base64 = base64_encode($doc);
+            //dd($base64);
             $mime = $request->file('file_foto_kos')->getClientMimeType();
 
-            $newOutlet['name_foto_kos'] = $request->name .'.'.$ext;
-            $newOutlet['file_foto_kos'] = $base64;
-            $newOutlet['mime_foto_kos'] = $mime;
+            $outletData['name_foto_kos'] = $request->name .'.'.$ext;
+            $outletData['file_foto_kos'] = $base64;
+            $outletData['mime_foto_kos'] = $mime;
         }
 
         if ($request->hasFile('file_foto_kamar')) {
             $path = $request->file('file_foto_kamar')->getRealPath();
-            $ext = $request->file_foto_kos->extension();
+            //dd($path);
+            $ext = $request->file_foto_kamar->extension();
             $doc = file_get_contents($path);
+            //dd($doc);
             $base64 = base64_encode($doc);
             $mime = $request->file('file_foto_kamar')->getClientMimeType();
 
-            $newOutlet['name_foto_kamar'] = $request->name .'.'.$ext;
-            $newOutlet['file_foto_kamar'] = $base64;
-            $newOutlet['mime_foto_kamar'] = $mime;
+            $outletData['name_foto_kamar'] = $request->name .'.'.$ext;
+            $outletData['file_foto_kamar'] = $base64;
+            $outletData['mime_foto_kamar'] = $mime;
         }
+
         $outlet->update($outletData);
 
         return redirect()->route('outlets.show', $outlet);

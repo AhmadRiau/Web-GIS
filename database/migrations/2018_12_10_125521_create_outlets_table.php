@@ -32,12 +32,16 @@ class CreateOutletsTable extends Migration
             $table->string('name_foto_kos')->nullable()->default(null);
             $table->string('mime_foto_kos')->nullable()->default(null);
 
+            $table->string('name_foto_kamar')->nullable()->default(null);
+            $table->string('mime_foto_kamar')->nullable()->default(null);
+
             $table->unsignedInteger('creator_id');
             $table->timestamps();
 
             $table->foreign('creator_id')->references('id')->on('users')->onDelete('restrict');
         });
-        DB::statement("ALTER TABLE outlets ADD file_foto_kos BLOB");
+        DB::statement("ALTER TABLE outlets ADD file_foto_kos MEDIUMBLOB");
+        DB::statement("ALTER TABLE outlets ADD file_foto_kamar MEDIUMBLOB");
 
     }
 

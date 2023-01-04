@@ -35,18 +35,19 @@
         @else
         <div class="card">
             <div class="card-header">{{ __('outlet.edit') }}</div>
-            <form method="POST" action="{{ route('outlets.update', $outlet) }}" accept-charset="UTF-8">
+            <form method="POST" action="{{ route('outlets.update', $outlet) }}" accept-charset="UTF-8" enctype="multipart/form-data">
                 {{ csrf_field() }} {{ method_field('patch') }}
                 <div class="card-body">
                     {{-- input foto kos --}}
                     <div class="form-group">
                         <label for="file_foto_kos" class="control-label">Foto Kos</label>
-                        <input id="file_foto_kos" type="file" name="file_foto_kos"
-                            class="form-control-file {{ $errors->has('file_foto_kos') ? ' is-invalid' : '' }}" required>
+                        <input id="file_foto_kos" type="file" name="file_foto_kos" placeholder="Pilih Foto Kos"
+                            class="form-control-file {{ $errors->has('file_foto_kos') ? ' is-invalid' : '' }}" >
                         {!! $errors->first('file_foto_kos', '<span class="invalid-feedback" role="alert">:message</span>') !!}
 
+                        <label for="file_foto_kamar" class="control-label">Foto Kamar</label>
                         <input id="file_foto_kamar" type="file" name="file_foto_kamar"
-                        class="form-control-file {{ $errors->has('file_foto_kamar') ? ' is-invalid' : '' }}" required>
+                        class="form-control-file {{ $errors->has('file_foto_kamar') ? ' is-invalid' : '' }}" >
                         {!! $errors->first('file_foto_kamar', '<span class="invalid-feedback" role="alert">:message</span>') !!}
                     </div>
                     {{-- input nama kos --}}
